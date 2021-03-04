@@ -85,7 +85,12 @@ body {
 }
 
 .form .input-text {
-    padding-right: 5px;
+    padding: 0 5px;
+}
+
+.form .input-text::placeholder {
+    color: #ff7b73;
+    font-weight: bold;
 }
 
 .form .input-submit {
@@ -95,4 +100,5 @@ body {
     font-size: 11px;
     background: #ff7b73;
     color: #F2F2F2;
+    cursor: pointer;
 }
