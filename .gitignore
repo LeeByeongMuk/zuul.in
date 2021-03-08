@@ -12,6 +12,11 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
+# Mix
+/public/js
+/public/mix-manifest.json
+package-lock.json
+
 # PhpStorm
 .idea
 
