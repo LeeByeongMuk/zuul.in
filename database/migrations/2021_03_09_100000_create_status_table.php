@@ -15,7 +15,7 @@ class CreateStatusTable extends Migration
     {
         Schema::create('status', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('url_id')->constrained();
+            $table->foreignId('url_id')->references('id')->on('url');
             $table->integer('today')->comment('오늘 방문자');
             $table->integer('total')->comment('누적 방문자');
             $table->timestamps();
