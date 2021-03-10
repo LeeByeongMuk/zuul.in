@@ -16,7 +16,7 @@ class CreateUrlTable extends Migration
         Schema::create('url', function (Blueprint $table) {
             $table->id();
             $table->string('name', 8)->unique()->comment('단축 URL');
-            $table->string('url')->comment('원본 URL');
+            $table->string('origin')->comment('원본 URL');
             $table->string('ip', 15)->nullable()->comment('생성한 아이피');
             $table->integer('today')->comment('오늘 방문자');
             $table->integer('total')->comment('누적 방문자');

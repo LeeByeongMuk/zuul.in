@@ -20,5 +20,5 @@ class Url extends Model
     ];
 
     /* The attributes that are mass assignable. */
-    protected $fillable = ['name', 'url', 'ip'];
+    protected $fillable = ['name', 'origin', 'ip', 'today', 'total'];
 }

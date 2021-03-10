@@ -23,7 +23,7 @@ class UrlFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->regexify('[a-z0-9]{6}'),
-            'url' => $this->faker->unique()->url,
+            'origin' => $this->faker->unique()->url,
             'ip' => $this->faker->ipv4,
         ];
     }
