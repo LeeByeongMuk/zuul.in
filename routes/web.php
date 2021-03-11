@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index');
 
+/* 유지보수, 관리의 편의를 위해 api route로 분리하지 않았음 */
+Route::post('store', [HomeController::class, 'store']);
+
+Route::get('{name}', [HomeController::class, 'show'])->where('name', '[a-z0-9]{6}');
