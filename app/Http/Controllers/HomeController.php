@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         $url = Url::create([
             'name' => $faker->unique()->regexify('[a-z0-9]{6}'),
-            'origin' => $request->only('url'),
+            'origin' => $request->url,
             'ip' => $request->ip(),
         ]);
 
