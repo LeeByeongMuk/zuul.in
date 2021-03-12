@@ -21,6 +21,7 @@ body {
     font-size: 300px;
     line-height: 84%;
     font-family: Modak;
+    font-weight: normal;
     padding-left: 7px;
     background-clip: text;
     -webkit-background-clip: text;
