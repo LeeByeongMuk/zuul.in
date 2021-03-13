@@ -1,3 +1,5 @@
+import { storeAPi } from '../api/store.js';
+
 export default class Form {
     constructor({$target}) {
         this.form = document.createElement('article');
@@ -23,30 +25,17 @@ export default class Form {
 
         submitBtn.addEventListener('click', async () => {
             try {
-                const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-                const response = await fetch('/store', {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                        "X-Requested-With": "XMLHttpRequest",
-                        "X-CSRF-Token": token
-                    },
-                    method: 'post',
-                    body: JSON.stringify({
-                        url: textField.value
-                    })
+                const response = await storeAPi({
+                    url: textField.value
                 });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    alert(`${location.href}${data.name} 입니다.`);
+                if (!response.isError) {
+                    alert(`${location.href}${response.data.name} 입니다.`);
                 } else {
-                    throw 'error';
+                    throw response;
                 }
             } catch (e) {
-                alert('오류');
-                console.log(e);
+                alert(e.data.message);
             }
         });
 
