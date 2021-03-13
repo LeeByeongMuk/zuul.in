@@ -1,16 +1,10 @@
+import Title from './components/Title.js';
+
 export default class Main {
     constructor($target) {
-        // title
-        this.title = document.createElement('h1');
-        this.title.className = 'title';
-
-        for (let i = 0; i < 4; i++) {
-            const titleText = document.createElement('span');
-            titleText.className = 'text';
-            titleText.classList.add(`text-${i + 1}`);
-            titleText.innerText = 'F';
-            this.title.append(titleText);
-        }
+        const title = new Title({
+            $target
+        });
 
         this.form = document.createElement('article');
         this.form.className = 'form';
@@ -58,8 +52,6 @@ export default class Main {
 
         this.form.append(textField);
         this.form.append(submitBtn);
-
-        $target.append(this.title);
         $target.append(this.form);
     }
 }
