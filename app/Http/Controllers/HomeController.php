@@ -39,6 +39,6 @@ class HomeController extends Controller
         $url = Url::where('name', $name)->first();
 
         /* route에서 직접 redirect 하지 않고 GA 실행 후 이동 */
-        return view('redirect', ['name' => $url->name]);
+        return view('redirect', ['origin' => $url->origin]);
     }
 }
