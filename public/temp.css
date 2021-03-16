@@ -56,13 +56,11 @@ body {
 
 /* form */
 .form {
-    position: absolute;
     display: flex;
-    left: 50%;
-    transform: translateX(-50%);
     justify-content: center;
     width: 300px;
     height: 40px;
+    margin: 0 auto;
     padding: 0 0.625em;
     border-radius: 6.25em;
     background-color: #ffffff;
@@ -101,5 +99,50 @@ body {
     font-size: 11px;
     background: #ff7b73;
     color: #F2F2F2;
+    cursor: pointer;
+}
+
+.result-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.result-section .result-list {
+    padding: 10px 15px;
+    border-radius: 20px;
+    background: #fff;
+}
+
+.result-section .result-list li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.result-section .result-list li:first-child {
+    margin-top: 0;
+}
+
+.result-section .result-list .url-data {
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.result-section .result-list .copy-btn{
+    padding: 0 6px;
+    border: 0;
+    border-radius: 10px;
+    background: #ff7b73;
+    font-size: 13px;
+    line-height: 32px;
+    color: #fff;
+    outline: none;
     cursor: pointer;
 }
