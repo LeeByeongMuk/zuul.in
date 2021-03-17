@@ -3,9 +3,12 @@ import Form from './components/Form.js';
 import ResultSection from './components/ResultSection.js';
 
 import { storeAPi } from './api/store.js';
+import { getLocalStorage, setLocalStorage } from './util/localStorage.js';
 
 export default class Main {
     constructor($target) {
+        const linkData = getLocalStorage('links') || [];
+
         const title = new Title({
             $target
         });
@@ -31,6 +34,7 @@ export default class Main {
                         resultSection.setState(response.data);
                         alert(`${location.href}${response.data.name} 입니다.`);
                         textField.value = '';
+                        setLocalStorage('links', resultSection.data);
                     } else {
                         throw response;
                     }
@@ -42,7 +46,7 @@ export default class Main {
 
         const resultSection = new ResultSection({
             $target,
-            data: []
+            data: linkData
         })
     }
 }
