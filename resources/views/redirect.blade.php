@@ -13,7 +13,7 @@
 
                     setTimeout(function(){
                         location.href = '{{ $origin }}';
-                    }, 1000);
+                    }, 400);
             })(window,document,'script','dataLayer','GTM-W8QJVTF');
         </script>
         <!-- End Google Tag Manager -->
@@ -21,7 +21,7 @@
         <script>
             setTimeout(function(){
                 location.href = '{{ $origin }}';
-            }, 1000);
+            }, 400);
         </script>
         @endif
 
