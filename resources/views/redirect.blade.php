@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        @if(env('APP_ENV' == 'production'))
         <!-- Google Tag Manager -->
         <script>
             (function(w,d,s,l,i){
@@ -12,10 +13,17 @@
 
                     setTimeout(function(){
                         location.href = '{{ $origin }}';
-                    }, 0);
+                    }, 1000);
             })(window,document,'script','dataLayer','GTM-W8QJVTF');
         </script>
         <!-- End Google Tag Manager -->
+        @else
+        <script>
+            setTimeout(function(){
+                location.href = '{{ $origin }}';
+            }, 1000);
+        </script>
+        @endif
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,9 +32,11 @@
         <title>{{ config('app.name') }}</title>
     </head>
     <body>
+        @if(env('APP_ENV' == 'production'))
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8QJVTF"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- End Google Tag Manager (noscript) -->
+        @endif
     </body>
 </html>
