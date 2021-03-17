@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        @if(env('APP_ENV' == 'production'))
+        @if(env('APP_ENV') == 'production')
         <!-- Google Tag Manager -->
         <script>
             (function(w,d,s,l,i){
@@ -32,7 +32,7 @@
         <title>{{ config('app.name') }}</title>
     </head>
     <body>
-        @if(env('APP_ENV' == 'production'))
+        @if(env('APP_ENV') == 'production')
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8QJVTF"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
