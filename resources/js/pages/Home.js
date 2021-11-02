@@ -1,4 +1,3 @@
-import Title from '@/components/Title.js';
 import Form from '@/components/Form.js';
 import ResultSection from '@/components/ResultSection.js';
 import { storeAPi } from '@/api/store.js';
@@ -8,13 +7,10 @@ import '@sass/app.scss';
 export default class Home {
     constructor($target) {
         const linkData = getLocalStorage('links') || [];
+        const main = document.querySelector('#main');
 
-        const title = new Title({
-            $target
-        });
-
-        const form = new Form({
-            $target,
+        new Form({
+            $target: main,
             onClick: async value => {
                 const regex = /^(((http(s?))\:\/\/)?)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
 
@@ -28,16 +24,11 @@ export default class Home {
                         url: value
                     });
 
-                    if (!response.isError) {
-                        const textField = document.querySelector('.input-text');
-
-                        resultSection.setState(response.data);
-                        alert(`${location.href}${response.data.name} 입니다.`);
-                        textField.value = '';
-                        setLocalStorage('links', resultSection.data);
-                    } else {
-                        throw response;
-                    }
+                    const textField = document.querySelector('.link-input-text');
+                    resultSection.setState(response.data);
+                    alert(`${location.href}${response.data.name} 입니다.`);
+                    textField.value = '';
+                    setLocalStorage('links', resultSection.data);
                 } catch (e) {
                     alert(e.data.message);
                 }
@@ -45,8 +36,10 @@ export default class Home {
         });
 
         const resultSection = new ResultSection({
-            $target,
+            $target: main,
             data: linkData
-        })
+        });
+
+        $target.appendChild(main);
     }
 }

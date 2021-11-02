@@ -16,5 +16,8 @@
         "postcss": "^8.1.14",
         "sass": "^1.43.4",
         "sass-loader": "^10.2.0"
+    },
+    "dependencies": {
+        "normalize.css": "^8.0.1"
     }
 }

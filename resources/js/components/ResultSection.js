@@ -6,7 +6,6 @@ export default class ResultSection {
         this.section.className = 'result-section';
 
         $target.append(this.section);
-
         this.render();
     }
 
@@ -26,7 +25,7 @@ export default class ResultSection {
 
         if (!name) return;
 
-        let textarea = document.createElement('textarea');
+        const textarea = document.createElement('textarea');
         textarea.value = `${location.href}${e.target.dataset.name}`;
         document.body.appendChild(textarea);
 
@@ -47,6 +46,8 @@ export default class ResultSection {
 
         this.data.forEach(obj => {
             const li = document.createElement('li');
+            const innerWrap = document.createElement('div');
+            innerWrap.className = 'result-list-item';
 
             const urlData = document.createElement('p');
             urlData.className = 'url-data';
@@ -58,8 +59,9 @@ export default class ResultSection {
             copyButton.dataset.name = obj.name;
             copyButton.innerText = '복사하기';
 
-            li.append(urlData);
-            li.append(copyButton);
+            innerWrap.append(urlData);
+            innerWrap.append(copyButton);
+            li.append(innerWrap);
             resultList.append(li);
         });
 
