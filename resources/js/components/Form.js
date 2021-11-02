@@ -43,5 +43,4 @@ export default class Form {
 
         this.inputFocus();
     }
-
 }

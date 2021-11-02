@@ -17,5 +17,4 @@ export default class Title {
             this.title.append(titleText);
         }
     }
-
 }

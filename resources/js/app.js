@@ -1,4 +1,4 @@
 import './bootstrap';
-import Main from './Main.js';
+import Home from './pages/Home.js';
 
-const app = new Main(document.querySelector('.app'));
+new Home(document.querySelector('.app'));

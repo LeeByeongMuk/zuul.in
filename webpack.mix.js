@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +12,32 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.webpackConfig({
+    resolve: {
+        extensions: ['*'],
+        alias: {
+            '@': `${__dirname}/resources/js`,
+            '@sass': `${__dirname}/resources/sass`
+        }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/,
+                use: [
+                    'sass-loader'
+                ]
+            }
+        ]
+    }
+});
+
+mix.options({
+    processCssUrls: false
+});
+
+mix.js('resources/js/app.js', 'public/js');
+
+if (mix.inProduction()) {
+    mix.version();
+}

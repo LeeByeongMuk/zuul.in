@@ -9,11 +9,13 @@
                 var f=d.getElementsByTagName(s)[0],
                     j=d.createElement(s),
                     dl=l!='dataLayer'?'&l='+l:'';
-                    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    j.async=true;
+                    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                    f.parentNode.insertBefore(j,f);
 
-                    setTimeout(function(){
-                        location.href = '{{ $origin }}';
-                    }, 400);
+                return (function() {
+                    location.href = '{{ $origin }}';
+                })();
             })(window,document,'script','dataLayer','GTM-W8QJVTF');
         </script>
         <!-- End Google Tag Manager -->

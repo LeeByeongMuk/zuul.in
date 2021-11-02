@@ -1,11 +1,11 @@
-import Title from './components/Title.js';
-import Form from './components/Form.js';
-import ResultSection from './components/ResultSection.js';
+import Title from '@/components/Title.js';
+import Form from '@/components/Form.js';
+import ResultSection from '@/components/ResultSection.js';
+import { storeAPi } from '@/api/store.js';
+import { getLocalStorage, setLocalStorage } from '@/util/localStorage.js';
+import '@sass/app.scss';
 
-import { storeAPi } from './api/store.js';
-import { getLocalStorage, setLocalStorage } from './util/localStorage.js';
-
-export default class Main {
+export default class Home {
     constructor($target) {
         const linkData = getLocalStorage('links') || [];
 

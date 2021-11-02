@@ -65,5 +65,4 @@ export default class ResultSection {
 
         this.section.append(resultList);
     }
-
 }

@@ -22,7 +22,6 @@
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
-        <link href="{{ asset('temp.css') }}" rel="stylesheet">
     </head>
     <body>
         @if(env('APP_ENV') == 'production')
