@@ -93,11 +93,11 @@ body {
 
     .result-list {
         margin: 0;
-        padding: 10px 15px 10px 30px;
+        padding: 10px 15px;
         border: 2px solid var(--main-color);
         background: var(--light-bg-color);
         color: var(--main-color);
-        list-style: square;
+        list-style: none; // TODO: square
         box-shadow: 0 0.125em 0.3125em rgb(200 200 200 / 80%);
     }
 

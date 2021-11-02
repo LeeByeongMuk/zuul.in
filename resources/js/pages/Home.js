@@ -1,13 +1,14 @@
 import Form from '@/components/Form.js';
 import ResultSection from '@/components/ResultSection.js';
 import { storeAPi } from '@/api/store.js';
-import { getLocalStorage, setLocalStorage } from '@/util/localStorage.js';
+import { getLocalStorage, setLocalStorage, clearLocalStorage } from '@/util/localStorage.js';
 import '@sass/app.scss';
 
 export default class Home {
     constructor($target) {
         const linkData = getLocalStorage('links') || [];
         const main = document.querySelector('#main');
+        clearLocalStorage(); //
 
         new Form({
             $target: main,
@@ -28,7 +29,7 @@ export default class Home {
                     resultSection.setState(response.data);
                     alert(`${location.href}${response.data.name} 입니다.`);
                     textField.value = '';
-                    setLocalStorage('links', resultSection.data);
+                    // setLocalStorage('links', resultSection.data);
                 } catch (e) {
                     alert(e.data.message);
                 }
@@ -37,7 +38,8 @@ export default class Home {
 
         const resultSection = new ResultSection({
             $target: main,
-            data: linkData
+            data: linkData,
+            max: 1
         });
 
         $target.appendChild(main);

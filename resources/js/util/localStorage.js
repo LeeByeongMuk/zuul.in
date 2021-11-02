@@ -5,11 +5,15 @@ const getLocalStorage = (key) => {
 
 const setLocalStorage = (key, value) => {
     if (!key || !value) return;
-
     localStorage.setItem(key, JSON.stringify(value));
 };
 
+const clearLocalStorage = () => {
+    localStorage.clear();
+}
+
 export {
     getLocalStorage,
-    setLocalStorage
+    setLocalStorage,
+    clearLocalStorage
 }

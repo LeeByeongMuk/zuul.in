@@ -1,6 +1,7 @@
 export default class ResultSection {
-    constructor({$target, data}) {
+    constructor({$target, data = [], max = 1}) {
         this.data = data;
+        this.max = max;
 
         this.section = document.createElement('article');
         this.section.className = 'result-section';
@@ -11,10 +12,7 @@ export default class ResultSection {
 
     setState(data) {
         if (!data) return;
-
-        if (this.data.length === 3) {
-            this.data.pop();
-        }
+        if (this.data.length === this.max) this.data.pop();
 
         this.data.unshift(data);
         this.render();
@@ -22,7 +20,6 @@ export default class ResultSection {
 
     copyClipboard(e) {
         const name = e.target.dataset.name;
-
         if (!name) return;
 
         const textarea = document.createElement('textarea');
