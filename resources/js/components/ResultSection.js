@@ -25,7 +25,7 @@ export default class ResultSection {
 
         const textarea = document.createElement('textarea');
         textarea.value = `${location.href}${e.target.dataset.name}`;
-        document.body.appendChildChild(textarea);
+        document.body.appendChild(textarea);
 
         textarea.select();
         document.execCommand('copy');
@@ -38,13 +38,8 @@ export default class ResultSection {
         this.section.innerHTML = '';
         const {oldPath, name} = this.data;
 
-        const resultWrap = document.createElement('div');
-        resultWrap.className = 'result-wrap';
-        resultWrap.addEventListener('click', this.copyClipboard);
-
         const innerWrap = document.createElement('div');
-        innerWrap.className = 'result-list-item';
-        resultWrap.appendChild(innerWrap);
+        innerWrap.className = 'result-wrap';
 
         const originPath = document.createElement('span');
         originPath.className = 'origin-path';
@@ -67,8 +62,9 @@ export default class ResultSection {
         copyButton.className = 'copy-btn';
         copyButton.dataset.name = name;
         copyButton.innerText = '복사하기';
+        copyButton.addEventListener('click', this.copyClipboard);
         pathWrap.appendChild(copyButton);
 
-        this.section.appendChild(resultWrap);
+        this.section.appendChild(innerWrap);
     }
 }
