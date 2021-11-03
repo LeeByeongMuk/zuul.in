@@ -1,3 +1,6 @@
+$box-shadow: 0 0.125em 0.3125em rgb(200 200 200 / 80%);
+$box-border: 10px;
+
 :root {
     --main-color: #ff7b73;
     --main-bg-color: #ffffff;
@@ -30,41 +33,37 @@ body {
 
 #main {
     width: 100%;
-    margin-top: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 50px 0;
+    box-sizing: border-box;
 }
 
 /* form */
 .link-form {
-    padding: 0 50px;
-
     .link-form-wrap {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         width: 100%;
-        max-width: 1200px;
         height: 60px;
-        margin: 0 auto;
-        padding: 0 0 0 20px;
-        border: 2px solid var(--main-color);
-        border-radius: 6.25em;
-        background-color: var(--light-bg-color);
-        box-sizing: border-box;
-        box-shadow: 0 0.125em 0.3125em rgb(200 200 200 / 80%);
     }
 
     .link-input {
-        border: 0;
-        outline: 0;
-        border-radius: 5em;
-        width: 100%;
         height: 100%;
+        border: 0;
+        border-radius: $box-border;
+        font-size: 20px;
         line-height: 100%;
-        background: var(--light-bg-color);
+        box-sizing: border-box;
+        outline: 0;
+        box-shadow: $box-shadow;
     }
 
     .link-input-text {
-        padding: 0 5px;
-        font-size: 20px;
+        width: calc(100% - 220px);
+        padding-left: 20px;
+        border: 2px solid var(--main-color);
+        background: var(--light-bg-color);
 
         &::placeholder {
             color: var(--main-color);
@@ -73,10 +72,9 @@ body {
     }
 
     .link-input-submit {
-        width: 100px;
+        width: 200px;
         height: 100%;
         font-weight: bold;
-        font-size: 16px;
         background: var(--main-color);
         color: var(--light-bg-color);
         cursor: pointer;
@@ -91,47 +89,47 @@ body {
     margin-top: 25px;
     box-sizing: border-box;
 
-    .result-list {
+    .result-wrap {
+        width: 100%;
         margin: 0;
-        padding: 10px 15px;
+        padding: 15px 20px;
         border: 2px solid var(--main-color);
+        border-radius: $box-border;
         background: var(--light-bg-color);
         color: var(--main-color);
-        list-style: none; // TODO: square
-        box-shadow: 0 0.125em 0.3125em rgb(200 200 200 / 80%);
+        list-style: none;
+        box-shadow: $box-shadow;
     }
 
-    .result-list li {
-        margin-top: 15px;
-
-        &:first-child {
-            margin-top: 0;
-        }
-    }
-
-    .result-list .result-list-item {
+    .result-wrap .result-wrap-item {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-content: center;
         align-items: center;
         width: 100%;
+        font-size: 18px;
     }
 
-    .result-list .url-data {
+    .result-wrap .path-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    .result-wrap .transform-path {
         margin-right: 20px;
         font-weight: bold;
-        font-size: 14px;
-        line-height: 14px;
+        color: var(--main-color);
     }
 
-    .result-list .copy-btn {
-        padding: 0 6px;
+    .result-wrap .copy-btn {
+        width: 100px;
+        height: 36px;
         border: 0;
-        border-radius: 10px;
+        border-radius: $box-border;
         background: var(--main-color);
         font-weight: bold;
-        font-size: 12px;
-        line-height: 32px;
+        font-size: 14px;
         color: var(--light-bg-color);
         outline: none;
         cursor: pointer;
@@ -149,16 +147,23 @@ body {
 }
 
 @media (max-width: 720px) {
-    .link-form {
-        padding: 0 25px;
+    #main {
+        padding: 25px 25px 0;
+    }
 
+    .link-form {
         .link-form-wrap {
-            padding-left: 10px;
-            height: 50px;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .link-input {
+            width: 100%;
+            font-size: 16px;
         }
 
         .link-input-text {
-            font-size: 14px;
+            height: 60px;
 
             ::placeholder {
                 font-weight: normal;
@@ -166,6 +171,27 @@ body {
         }
 
         .link-input-submit {
+            height: 50px;
+            margin-top: 20px;
+        }
+    }
+
+    .result-section {
+        .result-wrap .result-wrap-item {
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 16px;
+        }
+
+        .result-wrap .path-wrap {
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .result-wrap .copy-btn  {
+            width: 80px;
+            height: 32px;
             font-size: 14px;
         }
     }

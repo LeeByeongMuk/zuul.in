@@ -6,9 +6,8 @@ import '@sass/app.scss';
 
 export default class Home {
     constructor($target) {
-        const linkData = getLocalStorage('links') || [];
+        const linkData = getLocalStorage('links') || null;
         const main = document.querySelector('#main');
-        clearLocalStorage(); //
 
         new Form({
             $target: main,
@@ -26,10 +25,13 @@ export default class Home {
                     });
 
                     const textField = document.querySelector('.link-input-text');
-                    resultSection.setState(response.data);
+                    resultSection.setState({
+                        oldPath: textField.value,
+                        ...response.data
+                    });
                     alert(`${location.href}${response.data.name} 입니다.`);
                     textField.value = '';
-                    // setLocalStorage('links', resultSection.data);
+                    setLocalStorage('links', resultSection.data);
                 } catch (e) {
                     alert(e.data.message);
                 }

@@ -20,7 +20,6 @@ export default class Form {
 
         const textField = document.createElement('input');
         textField.type = 'text';
-        textField.className = 'link-form-input';
         textField.classList.add('link-input', 'link-input-text');
         textField.placeholder = '주소를 입력해 주세요 (ex: http://google.com)';
 
@@ -32,7 +31,6 @@ export default class Form {
 
         const submitBtn = document.createElement('button');
         submitBtn.type = 'button';
-        submitBtn.className = 'input';
         submitBtn.classList.add('link-input', 'link-input-submit');
         submitBtn.innerText = 'Shorten';
 

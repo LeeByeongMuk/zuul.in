@@ -1,20 +1,21 @@
 export default class ResultSection {
-    constructor({$target, data = [], max = 1}) {
+    constructor({$target, data = null, max = 1}) {
         this.data = data;
         this.max = max;
 
         this.section = document.createElement('article');
         this.section.className = 'result-section';
 
-        $target.append(this.section);
+        $target.appendChild(this.section);
         this.render();
     }
 
     setState(data) {
         if (!data) return;
-        if (this.data.length === this.max) this.data.pop();
 
-        this.data.unshift(data);
+        this.data = {
+            ...data
+        };
         this.render();
     }
 
@@ -24,7 +25,7 @@ export default class ResultSection {
 
         const textarea = document.createElement('textarea');
         textarea.value = `${location.href}${e.target.dataset.name}`;
-        document.body.appendChild(textarea);
+        document.body.appendChildChild(textarea);
 
         textarea.select();
         document.execCommand('copy');
@@ -33,35 +34,41 @@ export default class ResultSection {
     }
 
     render() {
-        if (!this.data.length) return;
-
+        if (!this.data) return;
         this.section.innerHTML = '';
+        const {oldPath, name} = this.data;
 
-        const resultList = document.createElement('ul');
-        resultList.className = 'result-list';
-        resultList.addEventListener('click', this.copyClipboard);
+        const resultWrap = document.createElement('div');
+        resultWrap.className = 'result-wrap';
+        resultWrap.addEventListener('click', this.copyClipboard);
 
-        this.data.forEach(obj => {
-            const li = document.createElement('li');
-            const innerWrap = document.createElement('div');
-            innerWrap.className = 'result-list-item';
+        const innerWrap = document.createElement('div');
+        innerWrap.className = 'result-list-item';
+        resultWrap.appendChild(innerWrap);
 
-            const urlData = document.createElement('p');
-            urlData.className = 'url-data';
-            urlData.innerText = `${location.href}${obj.name}`;
+        const originPath = document.createElement('span');
+        originPath.className = 'origin-path';
+        originPath.innerText = oldPath;
+        innerWrap.appendChild(originPath);
 
-            const copyButton = document.createElement('button');
-            copyButton.type = 'button';
-            copyButton.className = 'copy-btn';
-            copyButton.dataset.name = obj.name;
-            copyButton.innerText = '복사하기';
+        const pathWrap = document.createElement('div');
+        pathWrap.className = 'path-wrap'
+        innerWrap.appendChild(pathWrap);
 
-            innerWrap.append(urlData);
-            innerWrap.append(copyButton);
-            li.append(innerWrap);
-            resultList.append(li);
-        });
+        const path = `${location.href}${name}`;
+        const transformPath = document.createElement('a');
+        transformPath.href = path;
+        transformPath.className = 'transform-path';
+        transformPath.innerText = path
+        pathWrap.appendChild(transformPath);
 
-        this.section.append(resultList);
+        const copyButton = document.createElement('button');
+        copyButton.type = 'button';
+        copyButton.className = 'copy-btn';
+        copyButton.dataset.name = name;
+        copyButton.innerText = '복사하기';
+        pathWrap.appendChild(copyButton);
+
+        this.section.appendChild(resultWrap);
     }
 }
