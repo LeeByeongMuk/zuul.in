@@ -6,6 +6,7 @@ $box-border: 10px;
     --main-bg-color: #ffffff;
     --light-bg-color: #ffffff;
     --header-bg-color: #ff7b73;
+    --font-color: #333333;
 }
 
 body {
@@ -39,8 +40,23 @@ body {
     box-sizing: border-box;
 }
 
+.intro-section {
+    color: var(--font-color);
+
+    .intro-title {
+        margin: 0;
+    }
+
+    .intro-description {
+        margin: 15px 0 0 0;
+    }
+
+}
+
 /* form */
 .link-form {
+    margin-top: 25px;
+
     .link-form-wrap {
         display: flex;
         justify-content: space-between;
@@ -64,11 +80,12 @@ body {
         padding-left: 20px;
         border: 2px solid var(--main-color);
         background: var(--light-bg-color);
-        color: var(--main-color);
+        font-weight: bold;
+        color: var(--font-color);
 
         &::placeholder {
-            font-weight: bold;
-            color: var(--main-color);
+            font-weight: normal;
+            color: var(--font-color);
         }
     }
 
@@ -103,7 +120,7 @@ body {
         border-radius: $box-border;
         background: var(--light-bg-color);
         font-size: 18px;
-        color: var(--main-color);
+        color: var(--font-color);
         box-shadow: $box-shadow;
     }
 
@@ -115,7 +132,7 @@ body {
     .result-wrap .transform-path {
         margin-right: 20px;
         font-weight: bold;
-        color: var(--main-color);
+        color: var(--font-color);
     }
 
     .result-wrap .copy-btn {
@@ -139,15 +156,18 @@ body {
         --main-bg-color: #151515;
         --light-bg-color: #606060;
         --header-bg-color: #606060;
+        --font-color: #ffffff;
     }
 }
 
 @media (max-width: 720px) {
     #main {
-        padding: 25px 25px 0;
+        padding: 40px 25px 0;
     }
 
     .link-form {
+        margin-top: 20px;
+
         .link-form-wrap {
             flex-direction: column;
             height: auto;
@@ -173,6 +193,8 @@ body {
     }
 
     .result-section {
+        margin-top: 20px;
+
         .result-wrap {
             flex-direction: column;
             align-items: flex-start;

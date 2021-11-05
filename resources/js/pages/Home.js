@@ -1,3 +1,4 @@
+import IntroSection from "@/components/IntroSection.js";
 import Form from '@/components/Form.js';
 import ResultSection from '@/components/ResultSection.js';
 import { storeAPi } from '@/api/store.js';
@@ -8,6 +9,10 @@ export default class Home {
     constructor($target) {
         const linkData = getLocalStorage('links') || null;
         const main = document.querySelector('#main');
+
+        new IntroSection({
+            $target: main
+        });
 
         new Form({
             $target: main,
