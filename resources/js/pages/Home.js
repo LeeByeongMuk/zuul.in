@@ -1,14 +1,18 @@
+import Template from "@/Template/Template.js";
 import IntroSection from "@/components/IntroSection.js";
 import Form from '@/components/Form.js';
 import ResultSection from '@/components/ResultSection.js';
 import { storeAPi } from '@/api/store.js';
-import { getLocalStorage, setLocalStorage, clearLocalStorage } from '@/util/localStorage.js';
+import { getLocalStorage, setLocalStorage } from '@/util/localStorage.js';
 import '@sass/app.scss';
 
 export default class Home {
     constructor($target) {
         const linkData = getLocalStorage('links') || null;
-        const main = document.querySelector('#main');
+        const template = new Template({
+            $target
+        });
+        const main = template.getTarget();
 
         new IntroSection({
             $target: main
@@ -48,7 +52,5 @@ export default class Home {
             data: linkData,
             max: 1
         });
-
-        $target.appendChild(main);
     }
 }

@@ -1,3 +1,4 @@
+$screen-size: 1200px;
 $box-shadow: 0 0.125em 0.3125em rgb(200 200 200 / 80%);
 $box-border: 10px;
 
@@ -34,9 +35,9 @@ body {
 
 #main {
     width: 100%;
-    max-width: 1200px;
+    max-width: $screen-size;
     margin: 0 auto;
-    padding: 50px 50px 0;
+    padding: 50px 0 0;
     box-sizing: border-box;
 }
 
@@ -149,6 +150,21 @@ body {
     }
 }
 
+.footer {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    border-top: 1px solid var(--header-bg-color);
+
+    .footer-description {
+        margin: 0;
+        font-weight: bold;
+        font-size: 18px;
+        color: var(--font-color);
+        text-align: center;
+    }
+}
+
 // media
 @media (prefers-color-scheme: dark) {
     :root {
@@ -212,5 +228,9 @@ body {
             height: 32px;
             font-size: 14px;
         }
+    }
+
+    .footer {
+        margin-top: 35px;
     }
 }

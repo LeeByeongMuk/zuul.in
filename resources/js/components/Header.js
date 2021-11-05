@@ -1,9 +1,7 @@
 export default class Header {
-    constructor({$target}) {
+    constructor() {
         this.header = document.createElement('header');
         this.header.className = 'header';
-        $target.appendChild(this.header);
-        this.render();
     }
 
     render() {
@@ -17,5 +15,7 @@ export default class Header {
 
         title.appendChild(smallText);
         this.header.appendChild(title);
+
+        return this.header;
     }
 }
